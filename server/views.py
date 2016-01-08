@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from .models import Reading, Sensor
 from .serializers import ReadingSerializer, SensorSerializer
+from .pagination import ResultsSetPagination
 
 
 class SensorViewSet(viewsets.ModelViewSet):
@@ -11,6 +12,7 @@ class SensorViewSet(viewsets.ModelViewSet):
 class ReadingViewSet(viewsets.ModelViewSet):
     queryset = Reading.objects.all()
     serializer_class = ReadingSerializer
+    pagination_class = ResultsSetPagination
 
     def get_queryset(self):
         queryset = Reading.objects.all()
